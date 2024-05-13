@@ -935,9 +935,6 @@ kubectl delete service rumeysa-service
     - name: create loadbalancer service on kubernetes
       command: kubectl apply -f regapp-service.yml
 ```
-- To delete cluster, run below command:
-```sh
-eksctl delete cluster --name rumeysa-cluster
 ### Step5: CI Job to create Image for Kubernetes
 
 - Here we will just create a job named `RegApp_CI_Job` by using exieting job `CopyArtifactOntoDocker`. Last time we renamed our playbook, we will just update that in Exec Command section
@@ -960,6 +957,8 @@ Initialize only when build is stable
 ```
 - We can make an update to `index.jsp` in our `hello-world project` under `hello-world/webapp/src/main/webapp/` directory and push our changes to Github. This will trigger both CI&CD jobs triggered successively. 
 
-
+- To delete cluster, run below command:
+```sh
+eksctl delete cluster --name rumeysa-cluster
 
 
