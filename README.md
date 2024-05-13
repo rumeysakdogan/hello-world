@@ -531,11 +531,13 @@ Poll SCM * * * * *
 buid step: choose Copy artifacts from another project
 project  nbame -BuildAndDeployOnContainer (last job name)
 Artifacts to copy - **/*.war
-choose - Flatten directories
+choose - Fingerprint Artifacts
  
 Post build actions: ansiblehost
 source - **/*.war
 Remote Directory - //opt//docker/
+exec command - cd /opt/docker;
+mv webapp-1.0-SNAPSHOT.war webapp.war
 ```
 - Go to ansible server, we need to create `/opt/docker` directory and give ownership to `ansadmin`
 ```sh
