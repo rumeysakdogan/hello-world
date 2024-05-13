@@ -10,7 +10,7 @@
     
     <label for="mobile"><b>Enter mobile</b></label>
     <input type="text" placeholder="Enter mobile number" name="mobile" id="mobile" required>
-i    <br>
+    <br>
 
     <label for="email"><b>Enter Email</b></label>
     <input type="text" placeholder="Enter Email" name="email" id="email" required>
@@ -31,7 +31,7 @@ i    <br>
     <p>Already have an account? <a href="#">Sign in</a>.</p>
   </div>
 
-   <h1> Thankyou, Happy Learning-Nilesh </h1>
+   <h1> Thankyou, Happy Learning-Niles-project </h1>
 
   
 </form>
