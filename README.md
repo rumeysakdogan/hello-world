@@ -750,7 +750,7 @@ kubectl get no
 apiVersion: apps/v1 
 kind: Deployment
 metadata:
-  name: rumeysa-regapp
+  name: nilesh-regapp
   labels: 
      app: regapp
 
@@ -790,7 +790,7 @@ kubectl get deploy
 apiVersion: v1
 kind: Service
 metadata:
-  name: rumeysa-service
+  name: nilesh-service
 spec:
   selector:
     app: regapp 
@@ -918,8 +918,8 @@ ansible-playbook -i /opt/docker/hosts /opt/docker/kube_service.yml
 ```
 - Before running the job, lets delete existing deployments in our K8s server. Then we can run our job.
 ```sh
-kubectl delete deploy rumeysa-regapp
-kubectl delete service rumeysa-service
+kubectl delete deploy nilesh-regapp
+kubectl delete service nilesh-service
 ```
 
 - We can combine playbooks in one by adding `kube_service.yml` as a new task under `kube_deploy.yml`.
@@ -953,12 +953,12 @@ Initialize only when build is stable
 - We need to update one more thing in our `kube-deploy.yml` playbook. We need to specify the rollout whenever if new image is pushed to docker hub.
 ```yaml
   - name: update deployment with new pods if image updated in docker hub
-    command: kubectl rollout restart deployment.apps/rumeysa-regapp
+    command: kubectl rollout restart deployment.apps/nilesh-regapp
 ```
 - We can make an update to `index.jsp` in our `hello-world project` under `hello-world/webapp/src/main/webapp/` directory and push our changes to Github. This will trigger both CI&CD jobs triggered successively. 
 
 - To delete cluster, run below command:
 ```sh
-eksctl delete cluster --name rumeysa-cluster
+eksctl delete cluster --name nilesh-cluster
 
 
