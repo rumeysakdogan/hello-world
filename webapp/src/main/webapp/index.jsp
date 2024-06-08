@@ -31,7 +31,7 @@
     <p>Already have an account? <a href="#">Sign in</a>.</p>
   </div>
 
-   <h1> This  project conducted by Nilesh </h1>
+   <h1> the demo  project conducted by Nilesh as trainer </h1>
 
   
 </form>
