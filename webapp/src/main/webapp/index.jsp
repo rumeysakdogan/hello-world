@@ -21,7 +21,7 @@
 </head>  
 <body bgcolor="pink"> 
  
- <h1 bgcolor="red"> The Devops </h1> 
+ <h1 bgcolor="red"> The BORGWARD GROUP </h1> 
 <nav> <blockquote>
     
 <p> <h2> be a good person but don't waste your time to prove it </blockquote> </h2></p> </marquee>
