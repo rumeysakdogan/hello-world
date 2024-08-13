@@ -21,7 +21,7 @@
 </head>  
 <body bgcolor="pink"> 
  
- <h1 bgcolor="red"> PROJECT FOR AND OMKAR USING TOMCAT </h1> 
+ <h1 bgcolor="red"> PROJECT FOR AMOL  AND OMKAR USING TOMCAT </h1> 
 <nav>
 
     
