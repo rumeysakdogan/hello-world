@@ -21,10 +21,11 @@
 </head>  
 <body bgcolor="pink"> 
  
- <h1 bgcolor="red"> The BORGWARD GROUP </h1> 
-<nav> <blockquote>
+ <h1 bgcolor="red"> PROJECT FOR AND OMKAR USING TOMCAT </h1> 
+<nav>
+
     
-<p> <h2> be a good person but don't waste your time to prove it </blockquote> </h2></p> </marquee>
+<p><blockquote> <h2> be a good person but don't waste your time to prove it </blockquote> </h2></p> </marquee>
 </nav>
  
 </body>  
