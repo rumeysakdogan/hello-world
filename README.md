@@ -19,8 +19,8 @@ Security Group:
 - Next we need to install `Java`,`Jenkins`, `Maven` to our server.
 - First switch to root user `sudo su -` and update the packages first `sudo yum update -y`
 ```shell
-sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
-sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
+sudo wget -O /etc/yum.repos.d/jenkins.repo \ https://pkg.jenkins.io/redhat-stable/jenkins.repo
+sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
 ```
 - Then we need to install Java
 ```sh
@@ -68,7 +68,6 @@ Save -> Build Now
 - We need to install MAVEN in Jenkins server. 
 
 ```sh
-yum install java -y
 cd /opt
 sudo wget https://dlcdn.apache.org/maven/maven-3/3.9.6/binaries/apache-maven-3.9.6-bin.tar.gz 
 tar -xvzf apache-maven-3.9.6-bin.tar.gz
