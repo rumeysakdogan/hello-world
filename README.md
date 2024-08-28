@@ -42,14 +42,6 @@ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 ```sh
 sudo yum install git
 ```
-- Now we can run our first Jenkins job. Go to `Dashboard` -> `New Item` 
-```sh
-JobName: HelloWorldJob
-Type: Free Style Project
-Build Step: Execute shell
-echo "Hello World!"
-save -> build now
-```
 
 ### Step2: Integrate Git with Jenkins
 
