@@ -25,7 +25,7 @@ sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
 ```
 - Then we need to install Java
 ```sh
-sudo amazon-linux-extras install java-openjdk11 -y
+sudo yum install fontconfig java-17-openjdk
 ```
 - After installing Java, we can now install Jenkins and start our Jenkins server
 ```sh
