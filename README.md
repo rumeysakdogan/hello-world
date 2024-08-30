@@ -73,7 +73,7 @@ mv apache-maven-3.9.6 maven
 ```sh
 M2_HOME=/opt/maven
 M2=/opt/maven/bin
-JAVA_HOME=/usr/lib/jvm/java-11-openjdk-11.0.23.0.9-2.amzn2.0.1.x86_64
+JAVA_HOME=/usr/lib/jvm/java-17-openjdk-17.0.12.0.7-2.el9.x86_64
 PATH=$PATH:$HOME/bin:$M2_HOME:$M2:$JAVA_HOME
 export PATH
 ```
