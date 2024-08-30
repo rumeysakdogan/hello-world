@@ -1,24 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>My JSP Page</title>
+    <title>Online LMS</title>
 </head>
 <body>
-    <h1>Welcome to My JSP Page!</h1>
-    
-    <%
-        // JSP scriptlet to include Java code
-        String message = "Hello, World!";
-        out.println("<p>" + message + "</p>");
-    %>
-
-    <form action="result.jsp" method="post">
-        <label for="name">Enter your name:</label>
-        <input type="text" id="name" name="name">
-        <input type="submit" value="Submit">
-    </form>
+    <h1>Welcome to Online Learning Management System</h1>
+    <a href="login.jsp">Login</a> | <a href="register.jsp">Register</a>
 </body>
 </html>
