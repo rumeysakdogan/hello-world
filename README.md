@@ -353,8 +353,6 @@ Remove prefix: webapp/target
 Remote directory://opt//docker                  (/home/dockeradmin)
 ```
 
-- Save and build, we can check under dockerhost server if webapp successfully send to /home/dockeradmin by using SSH.
-
 ### Step5: Update Tomcat dockerfile to automate deployment process
 
 - Currently artifacts created through Jenkins are sent to `/home/dockeradmin`. We would like to change it to home directory of root user, and give ownership of this new directory to `dockeradmin`
