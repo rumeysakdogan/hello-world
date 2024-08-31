@@ -22,6 +22,7 @@ Security Group:
 sudo wget -O /etc/yum.repos.d/jenkins.repo \
     https://pkg.jenkins.io/redhat-stable/jenkins.repo
 sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
+sudo yum upgrade
 ```
 - Then we need to install Java
 ```sh
@@ -30,6 +31,7 @@ sudo yum install fontconfig java-17-openjdk
 - After installing Java, we can now install Jenkins and start our Jenkins server
 ```sh
 sudo yum install jenkins -y
+sudo systemctl daemon-reload
 sudo systemctl enable jenkins
 sudo systemctl start jenkins
 sudo systemctl status jenkins
