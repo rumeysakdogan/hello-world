@@ -425,7 +425,7 @@ ansadmin ALL=(ALL)       NOPASSWD: ALL
 - Next we will allow username/password authentication to login to our EC2 instance. By default, EC2s are only allowing connection using KeyPair via SSH not username/password.
 
 ```sh
-vim /etc/ssh/sshd_config
+nano /etc/ssh/sshd_config
 ```
 
 - We need to uncomment/comment below lines in `sshd_config` file and save it
@@ -435,7 +435,7 @@ PasswordAuthentication yes
 ```
 - We need to restart sshd service
 ```sh
-service sshd reload
+sudo service sshd reload
 ```
 
 - Next we need to switch to `ansadmin` user and create ssh key. Create key will be stored in `/home/ansadmin/.ssh` directory. `id_rsa` will be our private key, `id_rsa.pub` will be our public key.
@@ -480,7 +480,7 @@ PasswordAuthentication yes
 ```
 - We need to restart sshd service
 ```sh
-service sshd reload
+sudo service sshd reload
 ```
 
 ```Yaml
@@ -505,7 +505,7 @@ ansible all -m ping
 ```
 ### Step3: Integrate Ansible with Jenkins
 
-- Go to Jenkins server, `Manage jenkins` -> `Configure System`. We need to add below information under `Publish over SSH`:
+- Go to Jenkins server, `Manage jenkins` -> `Configure System`. We need to add below information under `Publish over SSH` Go To System Add ssh server:
 ```sh
 Name: ansible-server
 Hostname: Private-ip-of-Ansible-server
@@ -519,7 +519,7 @@ password
 Install Plugin - copy artifact
 Job Name: CopyArtifactsOntoAnsible
 SCM : https://github.com/nileshlip/hello-world-Projects.git
-Poll SCM * * * * *
+Poll SCM -Build after other projects are built-Select Last Job(BuildAndDeployOnContainer,)
 buid step: choose Copy artifacts from another project
 project  nbame -BuildAndDeployOnContainer (last job name)
 Artifacts to copy - **/*.war
@@ -528,8 +528,9 @@ choose - Fingerprint Artifacts
 Post build actions: ansiblehost
 source - **/*.war
 Remote Directory - //opt//docker/
-exec command - cd /opt/docker;
-mv webapp-1.0-SNAPSHOT.war webapp.war
+exec command - cd /opt/docker/com.example.maven-project/webapp/1.0-SNAPSHOT;
+mv webapp-1.0-SNAPSHOT.war webapp.war;
+mv webapp.war /opt/docker/
 ```
 - Go to ansible server, we need to create `/opt/docker` directory and give ownership to `ansadmin`
 ```sh
