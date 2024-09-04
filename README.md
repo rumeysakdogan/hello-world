@@ -368,8 +368,8 @@ chown -R dockeradmin:dockeradmin docker
 
 - We have our Dockerfile under `/home/root`, we will move Dockerfile under `docker` directory and change ownership as well 
 ```sh
-mv Dockerfile /opt/docker
-chown -R dockeradmin:dockeradmin docker
+sudo mv Dockerfile /opt/docker
+sudo chown -R dockeradmin:dockeradmin docker
 ```
 
 - We will change our Dockerfile to copy the webapps.war file under webapps/ in Tomcat container.
