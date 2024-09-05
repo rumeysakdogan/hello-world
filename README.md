@@ -565,7 +565,7 @@ docker run -t --name regapp-server -p 8081:8080 regapp:v1
 
 ### Step5: Ansible playbook to create image and container
 
-- We will create a simple playbook to create an image and container (In DockerHost).
+- We will create a simple playbook to create an image and container (In Ansible).
 ```yaml
 ---
 - hosts: ansible
