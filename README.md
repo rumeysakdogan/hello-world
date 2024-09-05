@@ -785,11 +785,13 @@ metadata:
   name: nilesh-service
 spec:
   selector:
-    app: regapp 
+    app: regapp
   ports:
-    - port: 8080
+    - name: http
+      port: 8080
       targetPort: 8080
   type: LoadBalancer
+
 ```
 
 - We can create and check our service with below `kubectl` commands:
