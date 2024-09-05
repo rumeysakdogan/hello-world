@@ -534,9 +534,9 @@ mv webapp.war /opt/docker/
 ```
 - Go to ansible server, we need to create `/opt/docker` directory and give ownership to `ansadmin`
 ```sh
-cd /opt
-mkdir docker
-chown -R ansadmin:ansadmin docker
+sudo cd /opt
+sudo mkdir docker
+sudo chown -R ansadmin:ansadmin docker
 ```
 
 - Save and build the job. `webapp.war` file is successfully copied to ansible server.
@@ -547,10 +547,9 @@ chown -R ansadmin:ansadmin docker
 ```sh
 sudo yum install docker -y
 sudo usermod -aG docker ansadmin
-systemctl status docker
-systemctl start docker
-systemctl enable docker
-systemctl status docker
+sudo systemctl start docker
+sudo systemctl enable docker
+sudo systemctl status docker
 ```
 
 - We will create same Dockerfile under `docker` directory in Ansible host.
@@ -566,7 +565,7 @@ docker run -t --name regapp-server -p 8081:8080 regapp:v1
 
 ### Step5: Ansible playbook to create image and container
 
-- We will create a simple playbook to create an image and container.
+- We will create a simple playbook to create an image and container (In DockerHost).
 ```yaml
 ---
 - hosts: ansible
