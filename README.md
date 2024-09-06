@@ -378,14 +378,37 @@ sudo chown -R dockeradmin:dockeradmin docker
 FROM tomcat:latest
 RUN cp -R /usr/local/tomcat/webapps.dist/* /usr/local/tomcat/webapps/
 COPY ./*.war /usr/local/tomcat/webapps
+COPY tomcat-users.xml /usr/local/tomcat/conf/
+COPY context.xml /usr/local/tomcat/webapps/manager/META-INF/
+```
+- Configure tomcat-users.xml for Manager Access ,Create tomcat-users.xml File On Dockerhost in /opt/docker/
+```sh<tomcat-users>
+  <!-- Define roles -->
+  <role rolename="manager-gui"/>
+  <role rolename="manager-script"/>
+  <role rolename="manager-status"/>
+
+  <!-- Define users with appropriate roles -->
+  <user username="admin" password="admin123" roles="manager-gui,manager-status"/>
+  <user username="deployer" password="deploy123" roles="manager-script"/>
+</tomcat-users>
+```
+- Modify context.xml to Allow Remote Access ,Create #context.xml file on /opt/docker  
+  ```sh
+  <Context antiResourceLocking="false" privileged="true">
+  <!-- Disable remote access restriction -->
+  <Valve className="org.apache.catalina.valves.RemoteAddrValve"
+         allow="^.*$" />
+</Context>
 ```
 
+ 
 - we build the image and create a container from the newly created image.
 ```sh
 docker build -t tomcat:v1 .
 docker run -d --name tomcatv1 -p 8086:8080 tomcat:v1
 ```
-
+For Tomcat Admin Access we need to create two file (
 - We can check our app from browser http://<public_ip_of_docker_host>:8086/webapp/
 
 - Now we can configure our `BuildAndDeployOnContainer` job to deploy our application. We will add below lines to `Exec Command` part. We also need to change `Remote directory` path as `//opt//docker`
