@@ -378,31 +378,7 @@ sudo chown -R dockeradmin:dockeradmin docker
 FROM tomcat:latest
 RUN cp -R /usr/local/tomcat/webapps.dist/* /usr/local/tomcat/webapps/
 COPY ./*.war /usr/local/tomcat/webapps
-COPY tomcat-users.xml /usr/local/tomcat/conf/
-COPY context.xml /usr/local/tomcat/webapps/manager/META-INF/
 ```
-- Configure tomcat-users.xml for Manager Access ,Create (tomcat-users.xml) File On Dockerhost in /opt/docker/
-```sh
-  <tomcat-users>
-  <!-- Define roles -->
-  <role rolename="manager-gui"/>
-  <role rolename="manager-script"/>
-  <role rolename="manager-status"/>
-
-  <!-- Define users with appropriate roles -->
-  <user username="admin" password="admin123" roles="manager-gui,manager-status"/>
-  <user username="deployer" password="deploy123" roles="manager-script"/>
-</tomcat-users>
-```
-- Modify context.xml to Allow Remote Access ,Create (context.xml) file on Dockerhost In /opt/docker/  
-  ```sh
-  <Context antiResourceLocking="false" privileged="true">
-  <!-- Disable remote access restriction -->
-  <Valve className="org.apache.catalina.valves.RemoteAddrValve"
-         allow="^.*$" />
-</Context>
-```
-
  
 - we build the image and create a container from the newly created image.
 ```sh
@@ -541,8 +517,7 @@ password
 ```sh
 Install Plugin - copy artifact
 Job Name: CopyArtifactsOntoAnsible
-SCM : https://github.com/nileshlip/hello-world-Projects.git
-Poll SCM -Build after other projects are built-Select Last Job(BuildAndDeployOnContainer,)
+Job Trigger -Build after other projects are built-Select Last Job(BuildAndDeployOnContainer,)
 buid step: choose Copy artifacts from another project
 project  nbame -BuildAndDeployOnContainer (last job name)
 Artifacts to copy - **/*.war
@@ -574,14 +549,37 @@ sudo systemctl start docker
 sudo systemctl enable docker
 sudo systemctl status docker
 ```
+- Configure tomcat-users.xml for Manager Access ,Create (tomcat-users.xml) File On Dockerhost in /opt/docker/
+```sh
+  <tomcat-users>
+  <!-- Define roles -->
+  <role rolename="manager-gui"/>
+  <role rolename="manager-script"/>
+  <role rolename="manager-status"/>
 
+  <!-- Define users with appropriate roles -->
+  <user username="admin" password="admin123" roles="manager-gui,manager-status"/>
+  <user username="deployer" password="deploy123" roles="manager-script"/>
+</tomcat-users>
+```
+- Modify context.xml to Allow Remote Access ,Create (context.xml) file on Dockerhost In /opt/docker/  
+  ```sh
+  <Context antiResourceLocking="false" privileged="true">
+  <!-- Disable remote access restriction -->
+  <Valve className="org.apache.catalina.valves.RemoteAddrValve"
+         allow="^.*$" />
+</Context>
+```
 - We will create same Dockerfile under `docker` directory in Ansible host.
 We can create image and run container from this image in `ansible` server.
 ```sh
 FROM tomcat:latest
 RUN cp -R /usr/local/tomcat/webapps.dist/* /usr/local/tomcat/webapps/
 COPY ./*.war /usr/local/tomcat/webapps
------------------
+COPY tomcat-users.xml /usr/local/tomcat/conf/
+COPY context.xml /usr/local/tomcat/webapps/manager/META-INF/
+```
+- try to build image for test purpose
 docker build -t regapp:v1 .
 docker run -t --name regapp-server -p 8081:8080 regapp:v1
 ```
