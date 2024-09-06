@@ -788,7 +788,7 @@ spec:
     app: regapp
   ports:
     - name: http
-      port: 8080
+      port: 80
       targetPort: 8080
   type: LoadBalancer
 
