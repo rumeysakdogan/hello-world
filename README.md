@@ -549,7 +549,7 @@ sudo systemctl start docker
 sudo systemctl enable docker
 sudo systemctl status docker
 ```
-- Configure tomcat-users.xml for Manager Access ,Create (tomcat-users.xml) File On Dockerhost in /opt/docker/
+- Configure tomcat-users.xml for Manager Access ,Create (tomcat-users.xml) File On Ansible in /opt/docker/
 ```sh
   <tomcat-users>
   <!-- Define roles -->
@@ -562,7 +562,7 @@ sudo systemctl status docker
   <user username="deployer" password="deploy123" roles="manager-script"/>
 </tomcat-users>
 ```
-- Modify context.xml to Allow Remote Access ,Create (context.xml) file on Dockerhost In /opt/docker/  
+- Modify context.xml to Allow Remote Access ,Create (context.xml) file on Ansible In /opt/docker/  
   ```sh
   <Context antiResourceLocking="false" privileged="true">
   <!-- Disable remote access restriction -->
@@ -580,6 +580,7 @@ COPY tomcat-users.xml /usr/local/tomcat/conf/
 COPY context.xml /usr/local/tomcat/webapps/manager/META-INF/
 ```
 - try to build image for test purpose
+```sh
 docker build -t regapp:v1 .
 docker run -t --name regapp-server -p 8081:8080 regapp:v1
 ```
@@ -604,7 +605,7 @@ ssh-copy-id <private-ip-of-ansible-server>
 - Next we need to add Ansible server to our `/etc/ansible/hosts` file.
 ```sh
 [dockerhost]
-172.31.29.5    ansible_user=ansadmin
+172.31.29.5    
 
 [ansible]
 172.31.84.3
