@@ -953,7 +953,7 @@ kubectl delete service nilesh-service
 ```
 ### Step5: CI Job to create Image for Kubernetes
 
-- Here we will just create a job named `RegApp_CI_Job` by using exieting job `CopyArtifactOntoDocker`. Last time we renamed our playbook, we will just update that in Exec Command section
+- Here we will just create a job named `RegApp_CI_Job` by using exieting job `CopyArtifactOntoDockercontainer`. Last time we renamed our playbook, we will just update that in Exec Command section(In Ansible)
 ```yaml
 ansible-playbook /opt/docker/create_image_regapp.yml
 ```
@@ -975,6 +975,6 @@ Initialize only when build is stable
 
 - To delete cluster, run below command:
 ```sh
-eksctl delete cluster --name nilesh-cluster
-
+eksctl delete cluster --name rd-cluster /
+--region us-east-1
 
