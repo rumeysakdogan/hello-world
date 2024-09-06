@@ -381,8 +381,9 @@ COPY ./*.war /usr/local/tomcat/webapps
 COPY tomcat-users.xml /usr/local/tomcat/conf/
 COPY context.xml /usr/local/tomcat/webapps/manager/META-INF/
 ```
-- Configure tomcat-users.xml for Manager Access ,Create tomcat-users.xml File On Dockerhost in /opt/docker/
-```sh<tomcat-users>
+- Configure tomcat-users.xml for Manager Access ,Create (tomcat-users.xml) File On Dockerhost in /opt/docker/
+```sh
+  <tomcat-users>
   <!-- Define roles -->
   <role rolename="manager-gui"/>
   <role rolename="manager-script"/>
@@ -393,7 +394,7 @@ COPY context.xml /usr/local/tomcat/webapps/manager/META-INF/
   <user username="deployer" password="deploy123" roles="manager-script"/>
 </tomcat-users>
 ```
-- Modify context.xml to Allow Remote Access ,Create #context.xml file on /opt/docker  
+- Modify context.xml to Allow Remote Access ,Create (context.xml) file on Dockerhost In /opt/docker/  
   ```sh
   <Context antiResourceLocking="false" privileged="true">
   <!-- Disable remote access restriction -->
@@ -408,7 +409,6 @@ COPY context.xml /usr/local/tomcat/webapps/manager/META-INF/
 docker build -t tomcat:v1 .
 docker run -d --name tomcatv1 -p 8086:8080 tomcat:v1
 ```
-For Tomcat Admin Access we need to create two file (
 - We can check our app from browser http://<public_ip_of_docker_host>:8086/webapp/
 
 - Now we can configure our `BuildAndDeployOnContainer` job to deploy our application. We will add below lines to `Exec Command` part. We also need to change `Remote directory` path as `//opt//docker`
