@@ -5,7 +5,7 @@
     <title>Online LMS</title>
 </head>
 <body>
-    <h1>Welcome to Online Learning Management System</h1>
+    <h1>Finnaly Our Devops Ci/CD Project Are Successfully Deployed</h1>
     <a href="login.jsp">Login</a> | <a href="register.jsp">Register</a>
 </body>
 </html>
