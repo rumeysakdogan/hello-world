@@ -975,6 +975,5 @@ Initialize only when build is stable
 
 - To delete cluster, run below command:
 ```sh
-eksctl delete cluster --name rd-cluster /
---region us-east-1
+eksctl delete cluster --name rd-cluster --region us-east-1
 
