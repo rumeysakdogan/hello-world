@@ -860,7 +860,7 @@ On Ansible Node:
  - Copy ssh public key
  - Test Connection
 ```
-- We will create a new like(host) file to add  `kubernetes bootstrap server` under `/opt/docker`
+- We will create a new file like(hosts) file (in Ansible) to add  `kubernetes bootstrap server` under `/opt/docker`
 ```yaml
 localhost
 
