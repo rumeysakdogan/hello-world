@@ -571,7 +571,7 @@ sudo systemctl status docker
 </Context>
 ```
 - We will create same Dockerfile under `docker` directory in Ansible host.
-We can create image and run container from this image in `ansible` server.
+- We can create image and run container from this image in `ansible` server.
 ```sh
 FROM tomcat:latest
 RUN cp -R /usr/local/tomcat/webapps.dist/* /usr/local/tomcat/webapps/
