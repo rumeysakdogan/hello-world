@@ -570,6 +570,7 @@ sudo systemctl status docker
          allow="^.*$" />
 </Context>
 ```
+
 - We will create same Dockerfile under `docker` directory in Ansible host,you can create image and run container from this image in `ansible` server.
 ```sh
 FROM tomcat:latest
